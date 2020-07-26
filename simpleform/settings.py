@@ -21,9 +21,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MEDIA_ROOT =  os.path.join(BASE_DIR, 'media') 
 MEDIA_URL = '/media/'
 
-#Added by divy for datefield in student_dob
-DATE_INPUT_FORMATS = ["%d-%m-%Y"]
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
@@ -33,7 +30,7 @@ SECRET_KEY = 'r*a2i-1b6s@w*=rc2b-2c3cc__jn+2en0$isr#)%_oj_hhc2yg'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['divyanshrai.pythonanywhere.com']
 
 
 # Application definition
