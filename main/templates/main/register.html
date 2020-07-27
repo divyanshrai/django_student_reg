@@ -3,10 +3,16 @@
 {% block content %}
 <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    
+
     {{form.as_p}}
     <button class=btn type="submit">Register</button>
 
 
 </form>
+<style>
+    .errorlist {
+        color: red;
+        border: 1px red solid;
+    }
+</style>
 {% endblock %}
