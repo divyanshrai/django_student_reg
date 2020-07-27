@@ -31,10 +31,10 @@ class student(models.Model):
                                     
     student_email=models.CharField(max_length=200)
 
-    student_DOB=models.DateField("Enter Date of Birth of Student",
+    student_DOB=models.DateField("Enter Date of Birth of Student in DD-MM-YYYY format",
                                 default=datetime.now,
                                 validators=[no_Future_Dob],
-                                help_text="Use the button on the right or the arrow keys to edit the date in DD-MM-YYYY format")
+                                help_text="Use the button on the right or the arrow keys to edit the date")
 
     student_timeofreg=models.DateTimeField(default=datetime.now)
 
