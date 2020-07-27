@@ -1,14 +1,25 @@
 from django import forms
-from django.core.validators import MaxValueValidator, MinValueValidator
 from django.forms import ValidationError
 from main.models import student
 
+class DateInput(forms.DateInput):
+    input_type = 'date'
 
+class EmailInput(forms.EmailInput):
+    pass
 
 class RegisterForm(forms.ModelForm):
     class Meta:
         model = student
-        fields = ('student_name','student_age','student_email','student_img','student_DOB')
+        widgets = {
+            'student_DOB': DateInput(),
+            'student_email':EmailInput(),
+        }
+        fields = ('student_name',
+                'student_age',
+                'student_email',
+                'student_img',
+                'student_DOB')
     
     def clean_student_name(self):
         student_name = self.cleaned_data['student_name']
