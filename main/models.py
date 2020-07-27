@@ -1,6 +1,23 @@
 from django.db import models
 from django.core.validators import MaxValueValidator,MinValueValidator
-from datetime import datetime
+from datetime import datetime,date
+from django.utils import timezone as tz
+from django.forms import ValidationError
+
+''' Methods that help validate the fields
+checkfordigits(s) - Checks each letter for digits
+no_Future_Dob(value) - Ensures DOB is not in the future
+
+
+ '''
+
+
+
+def no_Future_Dob(value):
+    today = date.today()
+    if value > today:
+        raise ValidationError('A date of birth cannot be in the future.')
+
 
 # Create your models here.
 class student(models.Model):
@@ -9,7 +26,8 @@ class student(models.Model):
                                     MinValueValidator(1)])
     student_email=models.CharField(max_length=200)
     student_DOB=models.DateField("Enter Date of Birth of Student",
-                                default=datetime.now)
+                                default=datetime.now,
+                                validators=[no_Future_Dob])
     student_timeofreg=models.DateTimeField(default=datetime.now)
     student_img=models.ImageField("Upload an image of the student",
                                 blank=True,upload_to="images/",
