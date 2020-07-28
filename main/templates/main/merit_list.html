@@ -5,9 +5,30 @@
     <blockquote>
         <h3>Merit List</h3>
     </blockquote>
+    <table class="striped centered responsive-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Mark in A</th>
+                <th>Mark in B</th>
+                <th>Mark in C</th>
+                <th>Total marks</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for name, tmarks, marka, markb, markc in meritlist %}
+            <tr>
+                <td>{{ name }}</td>
+                <td>{{ marka }}</td>
+                <td>{{ markb }}</td>
+                <td>{{ markc }}</td>
+                <td>{{ tmarks }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     <br>
-    {% for stu in students %}
-        <span class="card-title">{{stu.student_name}}</span>
-    {% endfor %}
 </div>
 {% endblock %}
