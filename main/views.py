@@ -33,3 +33,7 @@ def registerstu(request):
     template_name='main/register.html',
     context={'form':form})
 
+def merit_list(request):
+    return render(request,
+    template_name='main/merit_list.html',
+    context={'students':student.objects.all})

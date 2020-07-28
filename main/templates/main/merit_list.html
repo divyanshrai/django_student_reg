@@ -1,0 +1,13 @@
+{% extends 'main/header.html' %}
+
+{% block content %}
+<div class="row">
+    <blockquote>
+        <h3>Merit List</h3>
+    </blockquote>
+    <br>
+    {% for stu in students %}
+        <span class="card-title">{{stu.student_name}}</span>
+    {% endfor %}
+</div>
+{% endblock %}
