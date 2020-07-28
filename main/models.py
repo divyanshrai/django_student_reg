@@ -42,5 +42,23 @@ class student(models.Model):
                                 blank=True,upload_to="images/",
                                 default='default/blank_user.png')
 
+    student_marks_A=models.DecimalField(max_digits=5,
+                                        decimal_places=2,
+                                        validators=[MaxValueValidator(100.00),
+                                        MinValueValidator(0.00)],
+                                        default=0.00)
+
+    student_marks_B=models.DecimalField(max_digits=5,
+                                        decimal_places=2,
+                                        validators=[MaxValueValidator(100.00),
+                                        MinValueValidator(0.00)],
+                                        default=0.00)
+
+    student_marks_C=models.DecimalField(max_digits=5,
+                                        decimal_places=2,
+                                        validators=[MaxValueValidator(100.00),
+                                        MinValueValidator(0.00)],
+                                        default=0.00)
+
     def __str__(self):
         return self.student_name

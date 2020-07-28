@@ -19,4 +19,7 @@ class RegisterForm(forms.ModelForm):
                 'student_age',
                 'student_email',
                 'student_img',
-                'student_DOB')
+                'student_DOB',
+                'student_marks_A',
+                'student_marks_B',
+                'student_marks_C',)
