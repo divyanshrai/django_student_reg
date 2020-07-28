@@ -1,6 +1,6 @@
 from django.db import models
 from django.core.validators import MaxValueValidator,MinValueValidator
-from datetime import datetime,date
+from datetime import datetime,date,timedelta
 from django.utils import timezone as tz
 from django.forms import ValidationError
 
@@ -8,8 +8,8 @@ from django.forms import ValidationError
 checkfordigits(s) - Checks each letter for digits
 no_Future_Dob(value) - Ensures DOB is not in the future
 
-
  '''
+
 def checkForDigits(value):
     for character in value:
         if character.isdigit():
@@ -20,20 +20,35 @@ def no_Future_Dob(value):
     if value > today:
         raise ValidationError('A date of birth cannot be in the future.')
 
+def least_DOB_check(value):
+    least_Age=3
+    week_gap=least_Age*52
+    now=date.today()
+    least_date=now-timedelta(weeks=week_gap)
+    if value > least_date:
+        raise ValidationError('Your child needs to be at least 3 years old')
+
+def max_DOB_check(value):
+    max_Age=60
+    week_gap=max_Age*52
+    now=date.today()
+    max_date=now-timedelta(weeks=week_gap)
+    if value < max_date:
+        raise ValidationError('We are currently not accepting students over 50 years of age')
+
 
 # Create your models here.
 class student(models.Model):
     student_name=models.CharField(max_length=100,
                                 validators=[checkForDigits])
-
-    student_age=models.IntegerField(validators=[MaxValueValidator(200),
-                                    MinValueValidator(1)])
                                     
     student_email=models.CharField(max_length=200)
 
     student_DOB=models.DateField("Enter Date of Birth of Student in DD-MM-YYYY format",
                                 default=datetime.now,
-                                validators=[no_Future_Dob],
+                                validators=[no_Future_Dob,
+                                    least_DOB_check,
+                                    max_DOB_check],
                                 help_text="Use the button on the right or the arrow keys to edit the date")
 
     student_timeofreg=models.DateTimeField(default=datetime.now)

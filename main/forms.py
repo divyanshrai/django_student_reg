@@ -16,10 +16,9 @@ class RegisterForm(forms.ModelForm):
             'student_email':EmailInput(),
         }
         fields = ('student_name',
-                'student_age',
                 'student_email',
-                'student_img',
                 'student_DOB',
                 'student_marks_A',
                 'student_marks_B',
-                'student_marks_C',)
+                'student_marks_C',
+                'student_img',)
