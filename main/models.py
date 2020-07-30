@@ -85,3 +85,6 @@ class student(models.Model):
 
     def __str__(self):
         return self.student_name
+
+    class Meta:
+        unique_together = (("student_name", "student_mobile_number"),)
