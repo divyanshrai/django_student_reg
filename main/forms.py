@@ -15,7 +15,8 @@ class RegisterForm(forms.ModelForm):
             'student_DOB': DateInput(),
             'student_email':EmailInput(),
         }
-        fields = ('student_name',
+        fields = ('student_First_Name',
+                'student_Last_Name',
                 'student_mobile_number',
                 'student_email',
                 'student_DOB',
@@ -23,4 +24,8 @@ class RegisterForm(forms.ModelForm):
                 'student_marks_B',
                 'student_marks_C',
                 'student_img',
+                'guardian_First_Name',
+                'guardian_Last_Name',
+                'guardian_mobile_number',
+                'guardian_email',
                 )

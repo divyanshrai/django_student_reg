@@ -40,11 +40,12 @@ def merit_list(request):
     markb_dict={}
     markc_dict={}
     for stu in students:
-        stu_mark=stu.student_marks_A+stu.student_marks_B+stu.student_marks_C
-        merit_dict[stu.student_name]=stu_mark
-        marka_dict[stu.student_name]=stu.student_marks_A
-        markb_dict[stu.student_name]=stu.student_marks_B
-        markc_dict[stu.student_name]=stu.student_marks_C
+        stu_mark=stu.student_marks_A + stu.student_marks_B + stu.student_marks_C
+        student_name=stu.student_First_Name +" "+ stu.student_Last_Name
+        merit_dict[student_name]=stu_mark
+        marka_dict[student_name]=stu.student_marks_A
+        markb_dict[student_name]=stu.student_marks_B
+        markc_dict[student_name]=stu.student_marks_C
  #   merit_list=sorted(merit_dict.items(), key=lambda x: x[1],reverse=True)
     merit_list=[(x,y,marka_dict[x],markb_dict[x],markc_dict[x]) for (x,y) in sorted(merit_dict.items(), key=lambda x: x[1],reverse=True)]
 

@@ -3,6 +3,7 @@ from django.core.validators import MaxValueValidator,MinValueValidator
 from datetime import datetime,date,timedelta
 from django.utils import timezone as tz
 from django.forms import ValidationError
+from django.utils.crypto import get_random_string
 
 ''' Validators Methods that help validate the fields
 checkfordigits(s) - Checks each letter for digits
@@ -44,13 +45,16 @@ def max_DOB_check(value):
 
 # Create your models here.
 class student(models.Model):
-    student_name=models.CharField(max_length=100,
-                                validators=[checkForDigits])
+    student_First_Name=models.TextField(validators=[checkForDigits])
+    student_Last_Name=models.TextField(validators=[checkForDigits])
                                     
-    student_email=models.CharField(max_length=200)
+    student_email=models.TextField(null=True,
+                                blank=True)
     
     student_mobile_number=models.CharField(max_length=10,
-                                validators=[checkForAlpha])
+                                validators=[checkForAlpha],
+                                null=True,
+                                blank=True)
 
     student_DOB=models.DateField("Enter Date of Birth of Student in DD-MM-YYYY format",
                                 default=datetime.now,
@@ -82,9 +86,16 @@ class student(models.Model):
                                         validators=[MaxValueValidator(100.00),
                                         MinValueValidator(0.00)],
                                         default=0.00)
+ 
+    guardian_First_Name=models.TextField(validators=[checkForDigits])
+    guardian_Last_Name=models.TextField(validators=[checkForDigits])
+    guardian_email=models.TextField()
+    guardian_mobile_number=models.CharField(max_length=10,
+                                validators=[checkForAlpha])
+    
 
     def __str__(self):
-        return self.student_name
+        return self.student_First_Name
 
-    class Meta:
-        unique_together = (("student_name", "student_mobile_number"),)
+  #  class Meta:
+  #      unique_together = (("guardian_mobile_number", "student_First_Name","student_Last_Name"),)

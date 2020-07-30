@@ -2,22 +2,40 @@
 
 {% block content %}
 <form method="POST" enctype="multipart/form-data">
+    <blockquote>
+        <h3>Student details</h3>
+    </blockquote>
+    
+    {% csrf_token %}
+
     {% if form.non_field_errors %}
     <ul class="non-field-errors">
         {% for err in form.non_field_errors %}
-        <p class="errorlist">{{ err }}</p>
+        <li class="errorlist">{{ err }}</li>
         {% endfor %}
     </ul>
     {% endif %}
-    {% csrf_token %}
     <div class="row">
-        <div class="col s12 l6">
-            {{ form.student_name.label_tag }}
-            {{ form.student_name.errors }}
+        <div class="col s12 l2">
+            {{ form.student_First_Name.label_tag }}
+            {{ form.student_First_Name.errors }}
         </div>
-        <div class="col s12 l6">
-            {{ form.student_name }}
+        <div class="col s12 l4">
+            {{ form.student_First_Name }}
         </div>
+        <div class="col s12 l2">
+            {{ form.student_First_Name.label_tag }}
+            {{ form.student_First_Name.errors }}
+        </div>
+        <div class="col s12 l4">
+            {{ form.student_Last_Name }}
+        </div>
+        {% if form.student_Last_Name.help_text %}
+        <sup>{{ form.student_Last_Name.help_text }}</sup>
+        {% endif %}
+        {% if form.student_Last_Name.help_text %}
+        <sup>{{ form.student_Last_Name.help_text }}</sup>
+        {% endif %}
     </div>
 
     <div class="row">
@@ -106,7 +124,61 @@
         <sup>{{ form.student_img.help_text }}</sup>
         {% endif %}
     </div>
+    
+
+
+
+    <blockquote>
+        <h3>Guardian details</h3>
+    </blockquote>
+    <div class="row">
+        <div class="col s12 l2">
+            {{ form.guardian_First_Name.label_tag }}
+            {{ form.guardian_First_Name.errors }}
+        </div>
+        <div class="col s12 l4">
+            {{ form.guardian_First_Name }}
+        </div>
+        <div class="col s12 l2">
+            {{ form.guardian_Last_Name.label_tag }}
+            {{ form.guardian_Last_Name.errors }}
+        </div>
+        <div class="col s12 l4">
+            {{ form.guardian_Last_Name }}
+        </div>
+        {% if form.guardian_First_Name.help_text %}
+        <sup>{{ form.guardian_First_Name.help_text }}</sup>
+        {% endif %}
+        {% if form.guardian_Last_Name.help_text %}
+        <sup>{{ form.guardian_Last_Name.help_text }}</sup>
+        {% endif %}
+    </div>
+    <div class="row">
+        <div class="col s12 l6">
+            {{ form.guardian_mobile_number.label_tag }}
+            {{ form.guardian_mobile_number.errors }}
+        </div>
+        <div class="col s12 l6">
+            {{ form.guardian_mobile_number }}
+        </div>
+        {% if form.guardian_mobile_number.help_text %}
+        <sup>{{ form.guardian_mobile_number.help_text }}</sup>
+        {% endif %}
+    </div>
+    <div class="row">
+        <div class="col s12 l6">
+            {{ form.guardian_email.label_tag }}
+            {{ form.guardian_email.errors }}
+        </div>
+        <div class="col s12 l6">
+            {{ form.guardian_email }}
+        </div>
+        {% if form.guardian_email.help_text %}
+        <sup>{{ form.guardian_email.help_text }}</sup>
+        {% endif %}
+    </div>
     <button class="btn waves-effect" type="submit">Register</button>
+
 
 
 </form>
