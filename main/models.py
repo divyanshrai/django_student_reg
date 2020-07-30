@@ -15,6 +15,11 @@ def checkForDigits(value):
         if character.isdigit():
             raise ValidationError('Name cannot contain a digit.')
 
+def checkForAlpha(value):
+    for character in value:
+        if not character.isdigit():
+            raise ValidationError('Phone can only contain digits.')
+
 def no_Future_Dob(value):
     today = date.today()
     if value > today:
@@ -43,6 +48,9 @@ class student(models.Model):
                                 validators=[checkForDigits])
                                     
     student_email=models.CharField(max_length=200)
+    
+    student_mobile_number=models.CharField(max_length=10,
+                                validators=[checkForAlpha])
 
     student_DOB=models.DateField("Enter Date of Birth of Student in DD-MM-YYYY format",
                                 default=datetime.now,
