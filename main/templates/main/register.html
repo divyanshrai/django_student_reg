@@ -15,6 +15,20 @@
         {% endfor %}
     </ul>
     {% endif %}
+
+    <div class="row">
+        <div class="col s12 l6">
+            {{ form.student_Unique_ID.label_tag }}
+            {{ form.student_Unique_ID.errors }}
+        </div>
+        <div class="col s12 l6">
+            {{ form.student_Unique_ID }}
+        </div>
+        {% if form.student_Unique_ID.help_text %}
+        <sup>{{ form.student_Unique_ID.help_text }}</sup>
+        {% endif %}
+    </div>
+
     <div class="row">
         <div class="col s12 l2">
             {{ form.student_First_Name.label_tag }}
@@ -24,12 +38,16 @@
             {{ form.student_First_Name }}
         </div>
         <div class="col s12 l2">
-            {{ form.student_First_Name.label_tag }}
-            {{ form.student_First_Name.errors }}
+            {{ form.student_Last_Name.label_tag }}
+            {{ form.student_Last_Name.errors }}
         </div>
+
         <div class="col s12 l4">
             {{ form.student_Last_Name }}
         </div>
+
+
+
         {% if form.student_Last_Name.help_text %}
         <sup>{{ form.student_Last_Name.help_text }}</sup>
         {% endif %}

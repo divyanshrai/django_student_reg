@@ -42,9 +42,16 @@ def max_DOB_check(value):
     if value < max_date:
         raise ValidationError('We are currently not accepting students over 50 years of age')
 
+def get_random():
+    return    get_random_string(length=10,
+                              allowed_chars='ABCDEFGHJKLMNPQUSTWXYZ123456789')
+
 
 # Create your models here.
 class student(models.Model):
+    student_Unique_ID = models.CharField(max_length=10,
+                                        help_text="Please save this number, this will be used to unique identify the student",
+                                        default=get_random)
     student_First_Name=models.TextField(validators=[checkForDigits])
     student_Last_Name=models.TextField(validators=[checkForDigits])
                                     

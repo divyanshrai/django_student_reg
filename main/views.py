@@ -17,16 +17,11 @@ def registerstu(request):
             form.save()
             stu_name = form.cleaned_data.get('student_name')
             messages.success(request, f"New Student Registered: {stu_name}")
-#            args={'form': form,'text': stu_name}
             return redirect("main:homepage")
         else:
             return render(request,
             template_name='main/register.html',
             context={'form':form})
-
- #       else:
- #           for msg in form.errors:
- #               messages.error(request, f"{msg}: {form.errors[msg]}")
 
     form=RegisterForm()
     return render(request,
