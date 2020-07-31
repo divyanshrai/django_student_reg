@@ -15,7 +15,7 @@ def registerstu(request):
         form = RegisterForm(request.POST,request.FILES)
         if form.is_valid():
             form.save()
-            stu_name = form.cleaned_data.get('student_name')
+            stu_name = form.cleaned_data.get('student_First_Name')
             messages.success(request, f"New Student Registered: {stu_name}")
             return redirect("main:homepage")
         else:
