@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.contrib import messages
 from .models import student
-from .forms import RegisterForm
+from .forms import RegisterForm, CheckDetails
 
 # Create your views here.
 def homepage(request):
@@ -47,3 +47,10 @@ def merit_list(request):
     return render(request,
     template_name='main/merit_list.html',
     context={'meritlist':merit_list})
+
+def check_details(request):
+    
+    form = CheckDetails()
+    return render(request,
+    template_name='main/check_details.html',
+    context={'form':form})

@@ -107,3 +107,14 @@ class student(models.Model):
 
     class Meta:
         unique_together = (("guardian_mobile_number", "student_First_Name","student_Last_Name"),)
+
+
+class details(models.Model):
+    First_Name=models.TextField(validators=[checkForDigits])
+    Last_Name=models.TextField(validators=[checkForDigits])
+
+    Mobile_number=models.CharField(max_length=10,
+                                validators=[checkForAlpha])
+
+    def __str__(self):
+        return self.student_First_Name

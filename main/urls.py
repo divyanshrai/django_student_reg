@@ -24,5 +24,6 @@ app_name='main'
 urlpatterns = [
     path("",views.homepage,name="homepage"),
     path("register/",views.registerstu,name="register student"),
-    path("merit_list/",views.merit_list,name="merit_list"),
+    path("merit_list/",views.merit_list,name="merit list"),
+    path("check_details/",views.check_details,name="check details"),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

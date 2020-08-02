@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ValidationError
-from main.models import student
+from main.models import student,details
 
 class DateInput(forms.DateInput):
     input_type = 'date'
@@ -9,6 +9,7 @@ class EmailInput(forms.EmailInput):
     pass
 
 class RegisterForm(forms.ModelForm):
+
     class Meta:
         model = student
         widgets = {
@@ -33,3 +34,13 @@ class RegisterForm(forms.ModelForm):
     def __init__(self, *args, **kwargs): 
         super(RegisterForm, self).__init__(*args, **kwargs)                       
  #       self.fields['student_Unique_ID'].disabled = True
+
+
+class CheckDetails(forms.ModelForm):
+    class Meta:
+        model = details
+
+        fields = ('First_Name',
+                'Last_Name',
+                'Mobile_number',)
+

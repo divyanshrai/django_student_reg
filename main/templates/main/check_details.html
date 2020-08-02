@@ -1,0 +1,20 @@
+{% extends 'main/header.html' %}
+
+{% block content %}
+<form method="POST">
+    <blockquote>
+        <h3>Enter these student details to view all details</h3>
+    </blockquote>
+    
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn waves-effect" type="submit">Check</button>
+
+</form>
+<style>
+    .errorlist {
+        color: red;
+        border: 1px red solid;
+    }
+</style>
+{% endblock %}
