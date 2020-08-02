@@ -15,7 +15,7 @@ class RegisterForm(forms.ModelForm):
             'student_DOB': DateInput(),
             'student_email':EmailInput(),
         }
-        fields = ('student_Unique_ID',
+        fields = (#'student_Unique_ID',
                 'student_First_Name',
                 'student_Last_Name',
                 'student_mobile_number',
@@ -32,4 +32,4 @@ class RegisterForm(forms.ModelForm):
                 )
     def __init__(self, *args, **kwargs): 
         super(RegisterForm, self).__init__(*args, **kwargs)                       
-        self.fields['student_Unique_ID'].disabled = True
+ #       self.fields['student_Unique_ID'].disabled = True

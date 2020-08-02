@@ -52,7 +52,7 @@ class student(models.Model):
     student_Unique_ID = models.CharField(max_length=10,
                                         help_text="Please save this number, this will be used to unique identify the student",
                                         default=get_random,
-                                         primary_key=True)
+                                        primary_key=True)
     student_First_Name=models.TextField(validators=[checkForDigits])
     student_Last_Name=models.TextField(validators=[checkForDigits])
                                     
@@ -105,5 +105,5 @@ class student(models.Model):
     def __str__(self):
         return self.student_First_Name
 
-  #  class Meta:
-  #      unique_together = (("guardian_mobile_number", "student_First_Name","student_Last_Name"),)
+    class Meta:
+        unique_together = (("guardian_mobile_number", "student_First_Name","student_Last_Name"),)
