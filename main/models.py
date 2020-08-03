@@ -1,5 +1,5 @@
 from django.db import models
-from django.core.validators import MaxValueValidator,MinValueValidator
+from django.core.validators import MaxValueValidator,MinValueValidator,MinLengthValidator
 from datetime import datetime,date,timedelta
 from django.utils import timezone as tz
 from django.forms import ValidationError
@@ -60,7 +60,8 @@ class student(models.Model):
                                 blank=True)
     
     student_mobile_number=models.CharField(max_length=10,
-                                validators=[checkForAlpha],
+                                validators=[checkForAlpha,
+                                MinLengthValidator(10)],
                                 null=True,
                                 blank=True)
 
@@ -99,7 +100,8 @@ class student(models.Model):
     guardian_Last_Name=models.TextField(validators=[checkForDigits])
     guardian_email=models.TextField()
     guardian_mobile_number=models.CharField(max_length=10,
-                                validators=[checkForAlpha])
+                                validators=[checkForAlpha,
+                                MinLengthValidator(10)])
     
 
     def __str__(self):
@@ -114,7 +116,8 @@ class details(models.Model):
     Last_Name=models.TextField(validators=[checkForDigits])
 
     Mobile_number=models.CharField(max_length=10,
-                                validators=[checkForAlpha])
+                                validators=[checkForAlpha,
+                                MinLengthValidator(10)])
 
     def __str__(self):
         return self.student_First_Name

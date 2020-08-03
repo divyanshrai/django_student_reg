@@ -7,8 +7,46 @@
     </blockquote>
     
     {% csrf_token %}
-    {{ form.as_p }}
+    {{ form.as_ul }}
     <button class="btn waves-effect" type="submit">Check</button>
+    <br><br>
+
+    {% if student %}
+    
+    <img src="{{ student.student_img.url }}" class="circle responsive-img"
+                    style="height: 150px; width: 150px;" />
+    <table class="striped centered responsive-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Student Mobile Name</th>
+                <th>Student Email</th>
+                <th>Student date of birth</th>
+                <th>Marks in subject A</th>
+                <th>Marks in subject B</th>
+                <th>Marks in subject C</th>
+                <th>Guardian Name</th>
+                <th>Guardian Mobile Name</th>
+                <th>Guardian Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ student.student_First_Name }} {{ student.student_Last_Name }}</td>
+                <td>{{ student.student_mobile_number }}</td>
+                <td>{{ student.student_email }}</td>
+                <td>{{ student.student_DOB }}</td>
+                <td>{{ student.student_marks_A }}</td>
+                <td>{{ student.student_marks_B }}</td>
+                <td>{{ student.student_marks_C }}</td>
+                <td>{{ student.guardian_First_Name }} {{ student.guardian_Last_Name }}</td>
+                <td>{{ student.guardian_mobile_number }}</td>
+                <td>{{ student.guardian_email }}</td>
+            </tr>
+        </tbody>
+    </table>
+              
+    {% endif %}
 
 </form>
 <style>
