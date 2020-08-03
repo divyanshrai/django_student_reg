@@ -10,7 +10,7 @@ from .forms import RegisterForm, CheckDetails
 def homepage(request):
     return render(request,
                   template_name='main/home.html',
-                  context={'students': student.objects.all})
+                  context={'students': student.objects.all().order_by('-student_timeofreg')})
 
 
 def registerstu(request):
