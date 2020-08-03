@@ -12,10 +12,10 @@
     <br><br>
 
     {% if student %}
-    
+    {% csrf_token %}
     <img src="{{ student.student_img.url }}" class="circle responsive-img"
                     style="height: 150px; width: 150px;" />
-    <table class="striped centered responsive-table">
+    <table class="striped centered">
         <thead>
             <tr>
                 <th>Name</th>
